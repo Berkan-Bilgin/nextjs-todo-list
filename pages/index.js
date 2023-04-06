@@ -59,6 +59,17 @@ export default function Home() {
     return todos.filter((todo) => !todo.completed).length
   }
 
+  //Tamamlanmış todo öğelerini silmek için işlev
+  const deleteCompletedTodos = () => {
+    const updatedTodos = todos.filter(todo => !todo.completed);
+    setTodos(updatedTodos);
+  }
+
+  //Tüm todo öğelerini silmek için işlev
+    const deleteAllTodos = () => {
+      setTodos([]);
+    }
+
   return (
     <div>
       <Head>
@@ -67,7 +78,7 @@ export default function Home() {
 
       <main>
         <h1>To Do Listesi v2</h1>
-        <ul>
+        {/* <ul>
         {todos.map((todo) => (
             <TodoItem
               key={todo.id}
@@ -76,12 +87,8 @@ export default function Home() {
               deleteTodo={deleteTodo}
             />
           ))}
-        </ul>
-        <div>
-          <button onClick={() => setFilter('all')}>Tümü ({todos.length})</button>
-          <button onClick={() => setFilter('completed')}>Tamamlananlar ({completedTodosCount()})</button>
-          <button onClick={() => setFilter('incomplete')}>Tamamlanmamışlar ({incompleteTodosCount()})</button>
-        </div>
+        </ul> */}
+       
         <ul>
           {filteredTodos().map((todo) => (
             <TodoItem
@@ -92,6 +99,15 @@ export default function Home() {
             />
           ))}
         </ul>
+
+        <div>
+          <button onClick={() => setFilter('all')}>Tümü ({todos.length})</button>
+          <button onClick={() => setFilter('completed')}>Tamamlananlar ({completedTodosCount()})</button>
+          <button onClick={() => setFilter('incomplete')}>Tamamlanmamışlar ({incompleteTodosCount()})</button>
+          <button onClick={deleteCompletedTodos}>Tamamlanmışları sil</button>
+          <button onClick={deleteAllTodos}>Tümünü sil</button>
+        </div>
+
         <form onSubmit={addTodo}>
           <input
             type="text"
