@@ -2,11 +2,13 @@ import React from 'react';
 import Head from 'next/head';
 import { useState } from 'react';
 import TodoItem from '@/components/TodoItem';
+import TodoInput from '@/components/TodoInput';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Home() {
   // Statik todo öğeleri
   const [todos, setTodos] = useState([
-    { id: 1, title: 'İlk görev', completed: false },
+    { id: 1, title: 'İlk görev', completed: true },
     { id: 2, title: 'İkinci görev', completed: false },
     { id: 3, title: 'Üçüncü görev', completed: false },
   ]);
@@ -27,12 +29,12 @@ export default function Home() {
     }
   }
    // Yeni todo öğesini ekleme işlevi
-  const addTodo = (event) => {
-    event.preventDefault();
-    const newId = todos.length + 1;
+  const addTodo = (newTodo) => {
+    const newId = uuidv4();   //Benzersiz bir id oluşturmak için
     const newTodos = [...todos, { id: newId, title: newTodo, completed: false }];
     setTodos(newTodos);
     setNewTodo('');
+    console.log(todos)
   };
 
    // Todo öğesini silmek için işlev
@@ -77,7 +79,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>To Do Listesi v2</h1>
+        <h1>To Do Listesi v3</h1>
         {/* <ul>
         {todos.map((todo) => (
             <TodoItem
@@ -88,6 +90,8 @@ export default function Home() {
             />
           ))}
         </ul> */}
+
+       
        
         <ul>
           {filteredTodos().map((todo) => (
@@ -108,7 +112,9 @@ export default function Home() {
           <button onClick={deleteAllTodos}>Tümünü sil</button>
         </div>
 
-        <form onSubmit={addTodo}>
+        <TodoInput addTodo={addTodo} />
+
+        {/* <form onSubmit={addTodo}>
           <input
             type="text"
             value={newTodo}
@@ -116,7 +122,7 @@ export default function Home() {
             placeholder="Yeni görev ekle"
           />
           <button type="submit">Ekle</button>
-        </form>
+        </form> */}
       </main>
     </div>
   );
