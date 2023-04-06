@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { useState } from 'react';
+import TodoItem from '@/components/TodoItem';
 
 export default function Home() {
   // Statik todo öğeleri
@@ -12,6 +13,19 @@ export default function Home() {
    // Yeni todo öğesi için state
   const [newTodo, setNewTodo] = useState('');
 
+  // Filtreleme için state
+  const [filter,setFilter ] = useState('all');
+
+  // Filtrelenmiş todo ögelerini döndüren işlev
+  const filteredTodos = () => {
+    if (filter === 'completed') {
+      return todos.filter((todo) => todo.completed);
+    } else if (filter === 'incomplete') {
+      return todos.filter((todo) => !todo.completed)
+    } else {
+      return todos;
+    }
+  }
    // Yeni todo öğesini ekleme işlevi
   const addTodo = (event) => {
     event.preventDefault();
@@ -35,6 +49,16 @@ export default function Home() {
     setTodos(updatedTodos);
   };
 
+  //Tamamlanan todo sayısını döndüren işlev
+  const completedTodosCount = () => {
+    return todos.filter((todo) => todo.completed).length
+  }
+
+  //Tamamlanmamış todo sayısını döndüren işlev
+  const incompleteTodosCount = () => {
+    return todos.filter((todo) => !todo.completed).length
+  }
+
   return (
     <div>
       <Head>
@@ -42,18 +66,30 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>To Do Listesi</h1>
+        <h1>To Do Listesi v2</h1>
         <ul>
-          {todos.map((todo) => (
-            <li key={todo.id}>
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => toggleCompleted(todo.id)}
-              />
-              {todo.title}
-              <button onClick={() => deleteTodo(todo.id)}>Sil</button>
-            </li>
+        {todos.map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              toggleCompleted={toggleCompleted}
+              deleteTodo={deleteTodo}
+            />
+          ))}
+        </ul>
+        <div>
+          <button onClick={() => setFilter('all')}>Tümü ({todos.length})</button>
+          <button onClick={() => setFilter('completed')}>Tamamlananlar ({completedTodosCount()})</button>
+          <button onClick={() => setFilter('incomplete')}>Tamamlanmamışlar ({incompleteTodosCount()})</button>
+        </div>
+        <ul>
+          {filteredTodos().map((todo) => (
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              toggleCompleted={toggleCompleted}
+              deleteTodo={deleteTodo}
+            />
           ))}
         </ul>
         <form onSubmit={addTodo}>
