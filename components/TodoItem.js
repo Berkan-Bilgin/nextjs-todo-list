@@ -2,14 +2,14 @@ import React from 'react';
 
 const TodoItem = ({ todo, toggleCompleted, deleteTodo }) => {
   return (
-    <li>
-      <input
+    <li className='todoapp-item'>
+      <input className='todoapp-checkbox'
         type="checkbox"
         checked={todo.completed}
         onChange={() => toggleCompleted(todo.id)}
       />
       {todo.title}
-      <button onClick={() => deleteTodo(todo.id)}>Sil</button>
+      <button className='destroy' onClick={() => deleteTodo(todo.id)}></button>
     </li>
   );
 };
