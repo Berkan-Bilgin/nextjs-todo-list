@@ -82,36 +82,40 @@ export default function Home() {
       </Head>
 
       <main className="todoapp">
-        <h1 className="todoapp-title">todos</h1>
+  <h1 className="todoapp-title">todos</h1>
 
-        <div className="todoapp-card">
-          <TodoInput addTodo={addTodo} />
-          <ul>
-            {filteredTodos().map((todo) => (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
-                toggleCompleted={toggleCompleted}
-                deleteTodo={deleteTodo}
-              />
-            ))}
-          </ul>
+  <div className="todoapp-card">
+    <TodoInput addTodo={addTodo} />
+    <ul>
+      {filteredTodos().map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          toggleCompleted={toggleCompleted}
+          deleteTodo={deleteTodo}
+        />
+      ))}
+    </ul>
 
-          <div>
-            <button onClick={() => setFilter("all")}>
-              Tümü ({todos.length})
-            </button>
-            <button onClick={() => setFilter("completed")}>
-              Tamamlananlar ({completedTodosCount()})
-            </button>
-            <button onClick={() => setFilter("incomplete")}>
-              Tamamlanmamışlar ({incompleteTodosCount()})
-            </button>
-            <button onClick={deleteCompletedTodos}>Tamamlanmışları sil</button>
-            <button onClick={deleteAllTodos}>Tümünü sil</button>
-          </div>
-        </div>
-      </main>
+    <div>
+      <button className="todoapp-card__button" onClick={() => setFilter("all")}>
+        Tümü ({todos.length})
+      </button>
+      <button className="todoapp-card__button" onClick={() => setFilter("completed")}>
+        Tamamlananlar ({completedTodosCount()})
+      </button>
+      <button className="todoapp-card__button" onClick={() => setFilter("incomplete")}>
+        Tamamlanmamışlar ({incompleteTodosCount()})
+      </button>
+      <button className="todoapp-card__button" onClick={deleteCompletedTodos}>
+        Tamamlanmışları sil
+      </button>
+      <button className="todoapp-card__button" onClick={deleteAllTodos}>
+        Tümünü sil
+      </button>
+    </div>
+  </div>
+</main>
     </div>
   );
 }
