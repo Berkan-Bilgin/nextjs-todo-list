@@ -18,7 +18,7 @@ export default function Home() {
   // Filtreleme için state
   const [filter, setFilter] = useState("all");
 
-  // Filtrelenmiş todo ögelerini döndüren işlev
+  // Filtrelenmiş todo ögelerini döndüren fonksiyon
   const filteredTodos = () => {
     if (filter === "completed") {
       return todos.filter((todo) => todo.completed);
@@ -28,7 +28,7 @@ export default function Home() {
       return todos;
     }
   };
-  // Yeni todo öğesini ekleme işlevi
+  // Yeni todo öğesini ekleme fonksiyonu
   const addTodo = (newTodo) => {
     const newId = uuidv4(); //Benzersiz bir id oluşturmak için
     const newTodos = [
@@ -40,13 +40,13 @@ export default function Home() {
     console.log(todos);
   };
 
-  // Todo öğesini silmek için işlev
+  // Todo öğesini silmek için fonksiyon
   const deleteTodo = (id) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
 
-  // Todo öğesini tamamlamak/tamamlanmamış olarak işaretlemek için işlev
+  // Todo öğesini tamamlamak/tamamlanmamış olarak işaretlemek için fonksiyon
   const toggleCompleted = (id) => {
     const updatedTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -54,23 +54,23 @@ export default function Home() {
     setTodos(updatedTodos);
   };
 
-  //Tamamlanan todo sayısını döndüren işlev
+  //Tamamlanan todo sayısını döndüren fonksiyon
   const completedTodosCount = () => {
     return todos.filter((todo) => todo.completed).length;
   };
 
-  //Tamamlanmamış todo sayısını döndüren işlev
+  //Tamamlanmamış todo sayısını döndüren fonksiyon
   const incompleteTodosCount = () => {
     return todos.filter((todo) => !todo.completed).length;
   };
 
-  //Tamamlanmış todo öğelerini silmek için işlev
+  //Tamamlanmış todo öğelerini silmek için fonksiyon
   const deleteCompletedTodos = () => {
     const updatedTodos = todos.filter((todo) => !todo.completed);
     setTodos(updatedTodos);
   };
 
-  //Tüm todo öğelerini silmek için işlev
+  //Tüm todo öğelerini silmek için fonksiyon
   const deleteAllTodos = () => {
     setTodos([]);
   };
