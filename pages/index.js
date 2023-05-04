@@ -8,9 +8,9 @@ import { v4 as uuidv4 } from "uuid";
 export default function Home() {
   // Statik todo öğeleri
   const [todos, setTodos] = useState([
-    { id: 1, title: "İlk görev", completed: true },
-    { id: 2, title: "İkinci görev", completed: false },
-    { id: 3, title: "Üçüncü görev", completed: false },
+    { id: 1, title: "First todo", completed: true },
+    { id: 2, title: "Second todo", completed: false },
+    { id: 3, title: "Third todo", completed: false },
   ]);
   // Yeni todo öğesi için state
   const [newTodo, setNewTodo] = useState("");
