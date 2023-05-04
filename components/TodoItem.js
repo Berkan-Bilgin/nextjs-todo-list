@@ -12,7 +12,7 @@ const TodoItem = ({ todo, toggleCompleted, deleteTodo }) => {
     <span className={`todoitem__text${todo.completed ? ' todoitem__text--completed' : ''}`}>
       {todo.title}
     </span>
-    <button className="todoitem__delete" onClick={() => deleteTodo(todo.id)}></button>
+    <button className="todoitem__delete" onClick={() => deleteTodo(todo.id)}>x</button>
   </li>
   );
 };

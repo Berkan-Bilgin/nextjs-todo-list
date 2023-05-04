@@ -103,35 +103,6 @@ a {
 
 /* ********************TODO APP CSS******************** */
 
-/* .todoapp{
-  background-color: red;
-}
-
-.todoapp-title {
-  color: rgba(175, 47, 47, 0.45);
-  text-align: center;
-  margin-top: 20vh;
-  font-size: 72px;
-}
-
-.todoapp-card{
-  background-color: gainsboro;
-  width: 50%;
-  margin: auto;
-  padding: 20px
-  
-  
-}
-
-.todoapp-item{
-  list-style: none;
-  padding: 10px 0;
-}
-
-.todoapp-check{
-  padding: 5px;
-} */
-
 /* Genel stil */
 .todoapp {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -218,17 +189,15 @@ a {
 .todoitem__delete {
   padding: 2px 8px;
   border: 1px solid transparent;
-  background-color: #dc3545;
-  color: #fff;
-  border-color: #dc3545;
+  color: #000000;
   cursor: pointer;
   transition: border 0.2s;
 }
 
 .todoitem__delete:hover {
   border: 1px solid #ddd;
-  background-color: #c82333;
-  border-color: #c82333;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 /* Filtre ve eylem düğmeleri stil */
@@ -250,4 +219,10 @@ a {
 
 .todoapp-card button:hover {
   background-color: #eaeaea;
+}
+
+
+.todoapp-list {
+  height: 300px;
+  overflow-y: scroll;
 }

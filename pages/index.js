@@ -78,7 +78,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>To Do Listesi</title>
+        <title>To Do List</title>
       </Head>
 
       <main className="todoapp">
@@ -86,7 +86,7 @@ export default function Home() {
 
   <div className="todoapp-card">
     <TodoInput addTodo={addTodo} />
-    <ul>
+    <ul className="todoapp-list">
       {filteredTodos().map((todo) => (
         <TodoItem
           key={todo.id}
@@ -99,19 +99,19 @@ export default function Home() {
 
     <div>
       <button className="todoapp-card__button" onClick={() => setFilter("all")}>
-        Tümü ({todos.length})
+        All ({todos.length})
       </button>
       <button className="todoapp-card__button" onClick={() => setFilter("completed")}>
-        Tamamlananlar ({completedTodosCount()})
+        Completed ({completedTodosCount()})
       </button>
       <button className="todoapp-card__button" onClick={() => setFilter("incomplete")}>
-        Tamamlanmamışlar ({incompleteTodosCount()})
+        Active ({incompleteTodosCount()})
       </button>
       <button className="todoapp-card__button" onClick={deleteCompletedTodos}>
-        Tamamlanmışları sil
+        Delete Completed
       </button>
       <button className="todoapp-card__button" onClick={deleteAllTodos}>
-        Tümünü sil
+        Delete All
       </button>
     </div>
   </div>

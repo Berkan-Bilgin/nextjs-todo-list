@@ -24,11 +24,11 @@ return (
     type="text"
     value={inputValue}
     onChange={handleInputChange}
-    placeholder="Yeni görev ekle"
+    placeholder="Add todo"
   />
 
   <button className="todoinput__button" type="submit">
-    Ekle
+    Add
   </button>
 </form>
 )
